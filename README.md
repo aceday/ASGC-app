@@ -28,6 +28,7 @@ To test this project
 - Updated form 'display_student'.
 - Add version for display.
 - Optimize code for write date to text.
+- Set file new format ('yyyymmddhhmmss-student_id.txt')
 #### 1.1:
 - Added comment in every variables
 - Added 'Last Name, First Name' when inputting name of the student
