@@ -24,7 +24,7 @@ To test this project
 ### Versions:
 #### 1.2:
 - Fixed bug 'ZeroDivisionError'.
-- Replace from old student data tp re-add 'display_student'.
+- Replace from old student data to re-add 'display_student'.
 - Updated form 'display_student'.
 - Add version for display.
 - Optimize code for write date to text.
