@@ -1,19 +1,10 @@
 # <202280005@psu.palawan.edu.ph>
-# Function 1: Calculate Weighted Average
+# Students' given output
 # Coder1: Mark Cedie Buday @ BSCS2-B1
 # Coder2: John Lester Balmaceda @ BSCS2-B1
 # Schedule01: T: 11:00-13:00 CE Bldg 15
 # Schedule02: F: 10:00-13:00 NIT 1
-# Date Created: 2023-08-25
-# Added database using sqlite3
-import os
-class System:
-    def __name__(self):
-        pass
-    def clear(self):
-        os.system('cls' if os.name == 'nt' else 'clear')
-sys0 = System()
-sys0.clear()
+# Date Created: 2023-09-05
 def calculate_average(list):
     return sum(list) / len(list)
 std1_ass = [50, 60, 70, 80, 90, 95, 75]
@@ -36,17 +27,26 @@ quizzes = [std1_quiz, std2_quiz, std3_quiz, std4_quiz, std5_quiz]
 exams = [std1_exam, std2_exam, std3_exam, std4_exam, std5_exam]
 for i in range(7):
     assignment_scores = [ass[i] for ass in assignments]
+    sorted_scores = sorted(assignment_scores)
     print(f'A{i+1} U: {assignment_scores}')
-    print(f'A{i+1} S: {sorted(assignment_scores)}')
-    print(f'Class avg: {calculate_average(assignment_scores)}%\n')
+    print(f'A{i+1} S: {sorted_scores}')
+    print(f'Class avg: {calculate_average(assignment_scores)}%')
+    print(f'Lowest: Student {assignment_scores.index(sorted_scores[0])+1}, {len(assignments)}: {sorted_scores[0]}')
+    print(f'Highest: Student {assignment_scores.index(sorted_scores[-1])+1}: {sorted_scores[-1]}\n')
 for i in range(5):
     quiz_scores = [quiz[i] for quiz in quizzes]
+    sorted_scores = sorted(quiz_scores)
     print(f'Q{i+1} U: {quiz_scores}')
-    print(f'Q{i+1} S: {sorted(quiz_scores)}')
-    print(f'Class avg: {calculate_average(quiz_scores)}%\n')
+    print(f'Q{i+1} S: {sorted_scores}')
+    print(f'Class avg: {calculate_average(quiz_scores)}%')
+    print(f'Lowest: Student {quiz_scores.index(sorted_scores[0])+1}, {len(quizzes)}: {sorted_scores[0]}')
+    print(f'Highest: Student {quiz_scores.index(sorted_scores[-1])+1}: {sorted_scores[-1]}\n')
 for i in range(1):
     exam_scores = [exam[i] for exam in exams]
+    sorted_scores = sorted(exam_scores)
     print(f'E{i+1} U: {exam_scores}')
-    print(f'E{i+1} S: {sorted(exam_scores)}')
-    print(f'Class avg: {calculate_average(exam_scores)}%\n')
+    print(f'E{i+1} S: {sorted_scores}')
+    print(f'Class avg: {calculate_average(exam_scores)}%')
+    print(f'Lowest: Student {exam_scores.index(sorted_scores[0])+1}, {len(exams)}: {sorted_scores[0]}')
+    print(f'Highest: Student {exam_scores.index(sorted_scores[-1])+1}: {sorted_scores[-1]}\n')
 input('Break!')
