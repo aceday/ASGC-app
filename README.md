@@ -22,6 +22,8 @@ To test this project
 `$ python function01.py`
 
 ### Versions:
+#### 2.0:
+- Introducing database
 #### 1.2:
 - Fixed bug 'ZeroDivisionError'.
 - Replace from old student data to re-add 'display_student'.

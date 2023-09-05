@@ -1,4 +1,4 @@
-import os,sys,time,datetime
+import os,sys,time,datetime,sqlite3
 # from function01 import *
 # from function01 import *
 
@@ -8,13 +8,27 @@ def clear():
     else:
         os.system('clear')      
 def proj_header(ver):
-    print(f':: ASGC-App v.{ver}\n')
+    x=f':: ASGC-App v.{ver}\n'
+    return x
+    
 def std_info(l,f,m,id):
     mix=f"{l}, {f} {m}"
     mx = []
     for i in l,f,m,mix,id:
         mx.append(i)
     return mx
+
+def any_key():
+    akey=input('\nPress any key...')
+    
+def dbs(db):
+    con=sqlite3.connect(db)
+    cur=con.cursor()
+    if os.path.isfile(db):
+        dbf=[]
+        for i in con,cur:
+            dbf.append(i)
+        return dbf 
 def percentage(x,y):
     try:
         x=int(x)
@@ -56,10 +70,18 @@ def list_str(li):
 def poster(n):
     if n=='0':
         return 'None'
-    elif n=='11':
-        return 'NAME'
+    elif n=='01':
+        return 'WELCOME'
     elif n=='1':
         return 'MAIN MENU'
+    elif n=='11':
+        return 'NAME'
+    elif n=='12': # Version 2.0
+        return 'STUDENT SYSTEM'
+    elif n=='13': # Version 2.0
+        return 'GRADING SYSTEM'
+    elif n=='14': # Version 2.0
+        return 'COURSE SYSTEM'
     elif n=='2':
         return 'EDITOR MODE'
     elif n=='3':
@@ -102,7 +124,63 @@ def datetimenow():
     now = datetime.datetime.now()
     formatted_datetime = now.strftime('%Y%m%d%H%M%S')
     return formatted_datetime
-def display_student(name,id,w_dict,a,q,e):
+
+def display_std(name,id,w_dict,a,q,e): # Version 2.0
+    clear()
+    proj_header('v.2.0')
+    print(f"[{poster('61')}]\n")
+    print(f'Name: {name}')
+    print(f'Student ID: {id}\n')
+    #print(f'A: {a}')
+    #print(f'Q: {q}')
+    #print(f'E: {e}')
+    w_ass=w_dict[0]
+    w_quiz=w_dict[1]
+    w_exam=w_dict[2]
+    o_ass_per=0
+    o_ass_count=0
+    o_quiz_per=0
+    o_quiz_conut=0
+    o_exam_per=0
+    o_exam_count=0
+    overall=0
+    print('\n:: ASSIGNMENT:')
+    for p_out in a:
+        raw=p_out[3]
+        total=p_out[4]
+        print(f"[C{p_out[5]}] : '{p_out[1]}' : {raw}/{total} == {px_100(percentage(raw,total)):.2f}%")
+        o_ass_count+=1
+        o_ass_per+=percentage(raw,total)
+    ow_ass=(o_ass_per/o_ass_count)*w_ass
+    print(f'WEIGHTED: A: {px_100(ow_ass)}')
+    print('\n:: QUIZ')
+    for p_out in q:
+        raw=p_out[3]
+        total=p_out[4]
+        print(f"[C{p_out[5]}] : '{p_out[1]}' : {raw}/{total} == {px_100(percentage(raw,total)):.2f}%")
+        o_quiz_conut+=1
+        o_quiz_per+=percentage(raw,total)
+    ow_quiz=(o_quiz_per/o_quiz_conut)*w_quiz
+    print(f'WEIGHTED: Q: {px_100(ow_quiz)}')
+    print('\n:: EXAM')
+    for p_out in e:
+        raw=p_out[3]
+        total=p_out[4]
+        print(f"[C{p_out[5]}] : '{p_out[1]}' : {raw}/{total} == {px_100(percentage(raw,total)):.2f}%")
+        o_exam_count+=1
+        o_exam_per+=percentage(raw,total)
+    ow_exam=(o_exam_per/o_exam_count)*w_exam
+    print(f'WEIGHTED: E: {px_100(ow_exam)}')
+    for c in ow_ass,ow_quiz,ow_exam:
+        overall+=c
+    print(f'\nOVERALL: {px_100(overall):.2f}%')
+    print(f'RATING: {grade_rating(px_100(overall))}')
+    any_key()
+    
+
+
+
+def display_student(name,id,w_dict,a,q,e): # Version 1.x without databse
     wa=w_dict["assignment"]
     wq=w_dict["quiz"]
     we=w_dict["exam"]
