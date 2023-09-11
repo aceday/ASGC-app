@@ -78,6 +78,7 @@ while True:
             print('[a] Add Student')
             print('[e] Edit Student')
             print('[s] Search Student')
+            print('[l] All students')
             print('[d] Delete Student')
             print('\n[m] Main Menu')
             std_menu=input(':: student > ')
@@ -240,7 +241,20 @@ while True:
                                     print(f'ID: {i[0]}')
                                     print(f'Last Name: {i[1]}')
                                     print(f'First Name: {i[2]}\n')
-                                any_key()                                         
+                                any_key()
+            elif std_menu=='l': # List all registered students
+                while True:
+                    clear()
+                    print(proj_header(version))
+                    print(f"[{poster('12')}]")
+                    print('\n>> List all students <<\n')
+                    print(' STUDENT ID | Name')
+                    cur.execute(f"SELECT * FROM {t_std_name}")
+                    std_list=cur.fetchall()
+                    for std in std_list:
+                        print(f"  {std[0]} | {std[1]}, {std[2]}") 
+                    any_key()
+                    break                                      
             elif std_menu=='d': # Delete student data
                 while True:
                     clear()

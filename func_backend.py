@@ -8,15 +8,11 @@ def clear():
     else:
         os.system('clear')      
 def proj_header(ver):
-    x=f':: ASGC-App v.{ver}\n'
-    return x
+    return f':: ASGC-App v.{ver}\n'
     
 def std_info(l,f,m,id):
     mix=f"{l}, {f} {m}"
-    mx = []
-    for i in l,f,m,mix,id:
-        mx.append(i)
-    return mx
+    return [l, f, m, mix, id]
 
 def any_key():
     akey=input('\nPress any key...')
@@ -64,8 +60,7 @@ def weight_final(input, weight):
 def list_str(li):
     a=li[0]
     b=li[1]
-    mix=f"{a}/{b}"
-    return mix
+    return f"{a}/{b}"
 
 def poster(n):
     if n=='0':
@@ -122,8 +117,7 @@ def d_text(txt):
 
 def datetimenow():
     now = datetime.datetime.now()
-    formatted_datetime = now.strftime('%Y%m%d%H%M%S')
-    return formatted_datetime
+    return now.strftime('%Y%m%d%H%M%S')
 
 def display_std(name,id,w_dict,a,q,e): # Version 2.0
     clear()
@@ -152,7 +146,7 @@ def display_std(name,id,w_dict,a,q,e): # Version 2.0
         o_ass_count+=1
         o_ass_per+=percentage(raw,total)
     ow_ass=(o_ass_per/o_ass_count)*w_ass
-    print(f'WEIGHTED: A: {px_100(ow_ass)}')
+    print(f'WEIGHTED: A: {px_100(ow_ass):.2f}')
     print('\n:: QUIZ')
     for p_out in q:
         raw=p_out[3]
@@ -161,7 +155,7 @@ def display_std(name,id,w_dict,a,q,e): # Version 2.0
         o_quiz_conut+=1
         o_quiz_per+=percentage(raw,total)
     ow_quiz=(o_quiz_per/o_quiz_conut)*w_quiz
-    print(f'WEIGHTED: Q: {px_100(ow_quiz)}')
+    print(f'WEIGHTED: Q: {px_100(ow_quiz):.2f}%')
     print('\n:: EXAM')
     for p_out in e:
         raw=p_out[3]
@@ -170,7 +164,7 @@ def display_std(name,id,w_dict,a,q,e): # Version 2.0
         o_exam_count+=1
         o_exam_per+=percentage(raw,total)
     ow_exam=(o_exam_per/o_exam_count)*w_exam
-    print(f'WEIGHTED: E: {px_100(ow_exam)}')
+    print(f'WEIGHTED: E: {px_100(ow_exam):.2f}%')
     for c in ow_ass,ow_quiz,ow_exam:
         overall+=c
     print(f'\nOVERALL: {px_100(overall):.2f}%')
@@ -215,8 +209,7 @@ def p_total(value,w):
         pt+=p
         c+=1
     pt1=pt/c
-    pt2=w*pt1
-    return pt2
+    return w*pt1
 
 def printer(ver,name,id,w_dict,a,q,e):
     wa=w_dict["assignment"]
