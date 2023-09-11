@@ -8,7 +8,7 @@
 # Added database using sqlite3
 import os,time,datetime,sqlite3
 from func_backend import *
-version=2.0 #### Adding sqlite3 database ####
+version=2.2 #### Adding sqlite3 database ####
 db="data2.db" # Database name in file
 out_ctl=10 # Default for loop
 t_std_name='bscs2b1' # Course
