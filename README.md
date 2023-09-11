@@ -19,7 +19,8 @@ To test this project
 
 `$ cd scratch_ASGC`
 
-`$ python function01.py` 
+`$ python f1_db.py` # For version 2.x
+`$ python function01.py` # For version 1.x 
 
 ### Versions:
 #### 2.2:
