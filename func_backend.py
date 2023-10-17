@@ -146,7 +146,7 @@ def display_std(name,id,w_dict,a,q,e): # Version 2.0
         o_ass_count+=1
         o_ass_per+=percentage(raw,total)
     ow_ass=(o_ass_per/o_ass_count)*w_ass
-    print(f'WEIGHTED: A: {px_100(ow_ass):.2f}')
+    print(f'WEIGHTED: A: {px_100(ow_ass):.2f}%')
     print('\n:: QUIZ')
     for p_out in q:
         raw=p_out[3]

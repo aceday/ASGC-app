@@ -8,7 +8,7 @@
 # Added database using sqlite3
 import os,time,datetime,sqlite3
 from func_backend import *
-version=2.2 #### Adding sqlite3 database ####
+version=2.3 #### Adding sqlite3 database ####
 db="data2.db" # Database name in file
 out_ctl=10 # Default for loop
 t_std_name='bscs2b1' # Course
@@ -64,7 +64,7 @@ while True:
     print(f"[{poster('1')}]")
     print("[1] Student System")
     print("[2] Grading System")
-    print("[3] Course Editor")
+    # print("[3] Course Editor") # Hidden feature
     print("[4] Print Grades")
     
     print("\n[e] Exit")
@@ -491,7 +491,7 @@ while True:
                         std_grade_edit_id_int=int(std_grade_edit_id)
                         cur.execute(f"SELECT * FROM {t_std_name}")
                         std_info=cur.fetchall()
-                        print(std_info)
+                        # print(std_info)
                         #print(f'[{sample_std}]+1')
                         if std_info==f'[{sample_std}]':
                             print('Sample mode')
@@ -640,7 +640,7 @@ while True:
                         break            
                 except ValueError:
                     print('\n[!]   Error')
-                print(f'\n   [!] ID: {std_grade_del_id} not found!')
+                print(f'\n   [!] ID: {std_grade_edit_id} not found!')
             while std_menu=='dg' and not out_ctl==0:
                 clear()
                 print(proj_header(version))
@@ -660,7 +660,7 @@ while True:
                     # print(std_info)
                     
                     for std in std_info:
-                        print(std)
+                        # print(std) # For debug purpose
                         if std[0]==std_grade_del_int:
                             found=1
                             print(f'\n   [OK]   ID: {std[0]} Found')
@@ -697,7 +697,7 @@ while True:
                                 std_grade_del_sub_data_int=int(input('\nEnter subject: '))
                             except ValueError:
                                 print('\n   [!] Error input!')
-                                time.sleep(2)
+                                time.sleep(2) ; break
                             std_grade_del_sub_data=std_grade_del_sub_data_int
                             for sub in course_read:
                                 if std_grade_del_sub_data==sub[0]:
@@ -733,20 +733,31 @@ while True:
                                     break
                                 del_cur=input(':: delete > ').lower()
                                 if del_cur=='a':
-                                    del_type=output_type[0]
-                                    del_trig=1
+                                    err=input(filtered_out_ass)
+                                    if filtered_out_ass==[]:
+                                        print('No assignment data output!')
+                                    else:
+                                        del_type=output_type[0]
+                                        del_trig=1
                                 elif del_cur=='q':
-                                    del_type=output_type[1]
-                                    del_trig=1
+                                    if filtered_out_quiz==[]:
+                                        err=input('No quiz data output!')
+                                    else:
+                                        del_type=output_type[1]
+                                        del_trig=1
                                 elif del_cur=='e':
-                                    del_type=output_type[2]
-                                    del_trig=1
+                                    if filtered_out_exam==[]:
+                                        err=input('No exam data output!')
+                                    else:
+                                        del_type=output_type[2]
+                                        del_trig=1
                                 elif del_cur=='fe':
                                     out_ctl=0
                                     break
-                                while True:
+                                while del_trig==1:
                                     print('Ok!')
-                                    try:    
+                                    try:
+                                        print('')
                                         del_out_where=int(input('Output no.: '))
                                         if del_cur=='a':
                                             print('Assignment')
@@ -841,7 +852,11 @@ while True:
                 std_name=f'{std[1]}, {std[2]}'
                 std_id_pr=std_id_int
                 std_weight=weight
-                display_std(std_name,std_id,std_weight,assignment,quiz,exam)
+                if assignment or quiz or exam in []:
+                    print('\n [!] Must complete all requirements!')
+                    any_key()
+                else:
+                    display_std(std_name,std_id,std_weight,assignment,quiz,exam)
             break
             # any_key()
         else:

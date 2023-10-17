@@ -20,9 +20,14 @@ To test this project
 `$ cd scratch_ASGC`
 
 `$ python f1_db.py` # For version 2.x
+
 `$ python function01.py` # For version 1.x 
 
 ### Versions:
+#### 2.3:
+- Delete grades will almost fixed.
+- Course Editor on menu will hidden
+- Some modification for version 2.2 will fixed bug.
 #### 2.2:
 - Added list grades (But only one Block, we'll add soon)
 #### 2.1:
