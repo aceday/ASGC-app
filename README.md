@@ -15,16 +15,16 @@
 To test this project
 > For collaborators can access and test it
 
-`$ git clone https://github.com/aceday/scratch_ASGC` 
+`$ git clone https://github.com/aceday/ASGC-app` 
 
 `$ cd scratch_ASGC`
 
 `$ python f1_db.py` # For version 2.x
 
-`$ python function01.py` # For version 1.x 
+`$ python function01.py` # For version 1.x (For this Version was not maintain, it considered deprecated.)
 
 ### Versions:
-#### 2.3:
+#### 2.3: (2023-10-17)
 - Delete grades will almost fixed.
 - Course Editor on menu will hidden
 - Some modification for version 2.2 will fixed bug.
