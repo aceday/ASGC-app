@@ -19,7 +19,7 @@ To test this project
 
 `$ cd scratch_ASGC`
 
-`$ python main.py` # For version 2.x
+`$ python f1_db.py` # For version 2.x
 
 `$ python function01.py` # For version 1.x (For this Version was not maintain, it considered deprecated.)
 
