@@ -25,6 +25,7 @@ To test this project
 
 ### Versions:
 #### 2.3: (2023-10-17)
+- Add 'main.py' (Optimize code for 2.3)
 - Delete grades will almost fixed.
 - Course Editor on menu will hidden
 - Some modification for version 2.2 will fixed bug.
