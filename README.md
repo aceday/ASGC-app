@@ -17,7 +17,7 @@ To test this project
 
 `$ git clone https://github.com/aceday/ASGC-app` 
 
-`$ cd scratch_ASGC`
+`$ cd 'ASGC-app`
 
 `$ python f1_db.py` # For version 2.x
 
